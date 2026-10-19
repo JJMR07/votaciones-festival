@@ -1,4 +1,4 @@
-{% extends "prototipo_base.html" %}
+{% extends "layouts/prototipo_base.html" %}
 {% load static %}
 
 {% block content %}
@@ -14,7 +14,7 @@
         <div class="categories-grid">
             {% for categoria in categorias_destacadas %}
                 <article class="category-card card-{{ forloop.counter }}">
-                    <img src="{% static 'prototipo/img/music.png' %}" alt="Ilustración musical">
+                    <img src="{% static 'img/music.png' %}" alt="Ilustración musical">
                     <div><h3>{{ categoria.nombre }}</h3><p>{{ categoria.edicion.nombre }}</p></div>
                     <footer class="category-footer"><a href="{% url 'votaciones:votaciones_por_categoria' categoria.pk %}" class="btn">Ver votaciones</a></footer>
                 </article>

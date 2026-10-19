@@ -1,4 +1,4 @@
-{% extends "prototipo_base.html" %}
+{% extends "layouts/prototipo_base.html" %}
 {% load static %}
 
 {% block title %}{{ votacion.nombre }} | Festival Vallenato{% endblock %}
@@ -13,7 +13,7 @@
         <div class="opciones-lista">
             {% for opcion in votacion.opciones.all %}
                 <article class="opcion-card">
-                    <img class="opcion-foto" src="{% static 'prototipo/img/music.png' %}" alt="Ilustración de opción">
+                    <img class="opcion-foto" src="{% static 'img/music.png' %}" alt="Ilustración de opción">
                     <div><h2>{{ opcion.nombre }}</h2><p>Opción registrada para esta votación.</p></div>
                 </article>
             {% empty %}<p>No hay opciones registradas.</p>{% endfor %}
