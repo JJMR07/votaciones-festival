@@ -1,0 +1,20 @@
+{% extends "prototipo_base.html" %}
+
+{% block title %}Votaciones | Festival Vallenato{% endblock %}
+{% block content %}
+<main class="main-content">
+    <section class="votaciones-section">
+        <header class="votaciones-header"><h1>Votaciones disponibles</h1><p>Categoría: {{ categoria.nombre }}</p></header>
+        <div class="votaciones-lista">
+            {% for votacion in votaciones %}
+                <article class="tarjeta-votaciones">
+                    <header class="votacion-encabezado"><span>Disponible</span><h2>{{ votacion.nombre }}</h2></header>
+                    <p class="votacion-descripcion">Consulta las opciones registradas para esta votación.</p>
+                    <ul class="votacion-meta"><li><span>{{ votacion.opciones.count }} opciones registradas</span></li></ul>
+                    <footer class="votacion-acciones"><a href="{% url 'votaciones:detalle_votacion' votacion.pk %}" class="btn-votar">Ver opciones</a></footer>
+                </article>
+            {% empty %}<p>No hay votaciones registradas para esta categoría.</p>{% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

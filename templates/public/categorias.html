@@ -1,0 +1,20 @@
+{% extends "prototipo_base.html" %}
+{% load static %}
+
+{% block title %}Categorías | Festival Vallenato{% endblock %}
+{% block content %}
+<main class="main-content">
+    <section id="categories" class="categories-section">
+        <header class="categories-header"><h1>Categorías oficiales</h1></header>
+        <div class="categories-grid">
+            {% for categoria in categorias %}
+                <article class="category-card card-{{ forloop.counter }}">
+                    <img src="{% static 'prototipo/img/music2.png' %}" alt="Ilustración musical">
+                    <div><h2>{{ categoria.nombre }}</h2><p>{{ categoria.edicion.nombre }}</p></div>
+                    <footer class="category-footer"><a href="{% url 'votaciones:votaciones_por_categoria' categoria.pk %}" class="btn">Ver</a></footer>
+                </article>
+            {% empty %}<p>No hay categorías registradas.</p>{% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

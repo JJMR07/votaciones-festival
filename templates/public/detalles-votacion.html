@@ -1,0 +1,24 @@
+{% extends "prototipo_base.html" %}
+{% load static %}
+
+{% block title %}{{ votacion.nombre }} | Festival Vallenato{% endblock %}
+{% block content %}
+<main class="main-content">
+    <section class="detalle-votacion">
+        <a href="{% url 'votaciones:votaciones_por_categoria' votacion.categoria.pk %}" class="btn-secundario">Volver a votaciones</a>
+        <header class="detalle-votacion-header">
+            <h1>{{ votacion.nombre }}</h1>
+            <p>{{ votacion.categoria.nombre }} · {{ votacion.categoria.edicion.nombre }}</p>
+        </header>
+        <div class="opciones-lista">
+            {% for opcion in votacion.opciones.all %}
+                <article class="opcion-card">
+                    <img class="opcion-foto" src="{% static 'prototipo/img/music.png' %}" alt="Ilustración de opción">
+                    <div><h2>{{ opcion.nombre }}</h2><p>Opción registrada para esta votación.</p></div>
+                </article>
+            {% empty %}<p>No hay opciones registradas.</p>{% endfor %}
+        </div>
+        <p class="mt-4">El registro de votos y los resultados se implementarán en una entrega posterior, según el alcance definido.</p>
+    </section>
+</main>
+{% endblock %}
